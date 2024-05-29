@@ -1,23 +1,23 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function() {
     const todoForm = document.getElementById('todo-form');
     const titleInput = document.getElementById('title');
     const descriptionInput = document.getElementById('description');
     const todosContainer = document.getElementById('todos');
   
     // Function to add todo
-    const addTodo = (title, description) => {
-      const todo = { title, description };
+    function addTodo(title, description) {
+      const todo = { title: title, description: description };
       let todos = JSON.parse(localStorage.getItem('todos')) || [];
       todos.push(todo);
       localStorage.setItem('todos', JSON.stringify(todos));
       displayTodos();
-    };
+    }
   
     // Function to display todos
-    const displayTodos = () => {
+    function displayTodos() {
       todosContainer.innerHTML = '';
       let todos = JSON.parse(localStorage.getItem('todos')) || [];
-      todos.forEach(todo => {
+      todos.forEach(function(todo) {
         const todoElement = document.createElement('div');
         todoElement.classList.add('todo');
         todoElement.innerHTML = `
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
         `;
         todosContainer.appendChild(todoElement);
       });
-    };
+    }
   
     // Handle form submission
     todoForm.addEventListener('submit', function(e) {
@@ -45,4 +45,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Display existing todos on page load
     displayTodos();
   });
-  
