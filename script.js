@@ -6,14 +6,12 @@ document.addEventListener('DOMContentLoaded', function() {
   
     // Function to add todo
     function addTodo(title, description) {
-      const todo = { title: title, description: description };
+      const todo = { title: 'title', description: 'description' };
       let todos = JSON.parse(localStorage.getItem('todos')) || [];
       todos.push(todo);
       localStorage.setItem('todos', JSON.stringify(todos));
       displayTodos();
     }
-  
-    // Function to display todos
     function displayTodos() {
       todosContainer.innerHTML = '';
       let todos = JSON.parse(localStorage.getItem('todos')) || [];
@@ -27,8 +25,6 @@ document.addEventListener('DOMContentLoaded', function() {
         todosContainer.appendChild(todoElement);
       });
     }
-  
-    // Handle form submission
     todoForm.addEventListener('submit', function(e) {
       e.preventDefault();
       const title = titleInput.value.trim();
@@ -41,7 +37,5 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('Please fill in both fields');
       }
     });
-  
-    // Display existing todos on page load
     displayTodos();
   });
